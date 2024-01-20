@@ -1,14 +1,14 @@
 server:
-  port : ${CAFETERIA_USER_PORT:8083}
+  port : ${CAFETERIA_WEB_PORT:8080}
   servlet:
-    context-path: /user
+    context-path: /
 api:
   security:
     token:
       secret: ${JWT_SECRET:cafeteria-key}
 spring:
   application:
-    name: user
+    name: web
   datasource:
     username: postgres
     password: postgres

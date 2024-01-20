@@ -3,5 +3,6 @@ rootProject.name = 'cafeteria-api'
 include 'user'
 include 'product'
 include 'order'
+include 'web'
 
 

@@ -1,4 +1,4 @@
-ARG BUILD_HOME=/user
+ARG BUILD_HOME=/web
 FROM gradle:jdk19 as build-image
 
 ARG BUILD_HOME
@@ -14,9 +14,9 @@ FROM openjdk:19-alpine
 
 ARG BUILD_HOME
 ENV APP_HOME=$BUILD_HOME
-COPY --from=build-image $APP_HOME/build/libs/user.jar app.jar
+COPY --from=build-image $APP_HOME/build/libs/web.jar app.jar
 
 ENV JAVA_OPTS=""
 ENV PORTAL_POSTGRES_URL="jdbc:postgresql://postgres:5432/postgres"
-ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom  -jar /app.jar --server.port=8083" ]
+ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom  -jar /app.jar --server.port=8080" ]
 
