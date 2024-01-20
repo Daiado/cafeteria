@@ -1,0 +1,31 @@
+server:
+  port : ${CAFETERIA_ORDER_PORT:8081}
+  servlet:
+    context-path: /order
+api:
+  security:
+    token:
+      secret: ${JWT_SECRET:cafeteria-key}
+spring:
+  application:
+    name: order
+  mvc:
+    view:
+      prefix: WEB-INF/jsp/
+      suffix: .jsp
+  datasource:
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://localhost:5432/cafeteria
+    hikari:
+      pool-name: postgresql-pool
+      connection-timeout: 60000
+  jpa:
+    hibernate:
+      ddl-auto: none
+    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+    show-sql: false
+
+
+
+

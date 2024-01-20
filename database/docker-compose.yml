@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:15
+    restart: always
+    environment:
+      - POSTGRES_DB=cafeteria
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - db-vol:/var/lib/postgresql/data
+      - ./00_create_tables.sql:/docker-entrypoint-initdb.d/00_create_tables.sql:ro
+      - ./01_initialize.sql:/docker-entrypoint-initdb.d/01_initialize.sql:ro
+volumes:
+  db-vol:
+    driver: local
