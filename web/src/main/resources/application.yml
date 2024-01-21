@@ -22,6 +22,9 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQL10Dialect
     show-sql: false
 
+services:
+  user-api: ${CAFETERIA_USER_URL:http://localhost:8083/user}
+
 
 
 
