@@ -5,6 +5,9 @@
   <title>Registration page</title>
 </head>
 <body>
+<div th:if="${param.error}">
+  Error creation user.
+</div>
 <form th:action="@{/registration}" method="post" th:object="${user}">
   <input name="name" type="text" placeholder="Name">
   <input name="email" type="text" placeholder="Email">
