@@ -2,13 +2,46 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
-  <link rel="stylesheet" href="styles/style.css">
+  <title>Order Page</title>
 </head>
 <body>
+<h1>Welcome <p th:text="${user.getName()}"></p> </h1>
 
-<h1>This is order Page</h1>
 
+<form th:action="@{/order}" method="post" th:object="${order}">
 
+  <input  th:value="${user.getName()}" name="name" type="text" placeholder="name" th:readonly=true>
+
+  <select name="beverage">
+    <option th:each="beverage : ${beverages}" th:text="${beverage.description}" th:value="${beverage.getId()}"/>
+  </select>
+  <select name="mainCourse">
+    <option th:each="mainCourse : ${mainCourses}"  th:text="${mainCourse.description}" th:value="${mainCourse.getId()}"/>
+  </select>
+  <input type="submit" value="Submit order">
+</form>
+<div th:if="${param.success}">
+  Order successfully created
+</div>
+<br>
+<br>
+<div th:if="${latestOrder.getUser() != null}">
+  Change your latest order
+  <form th:action="@{/order}" method="put" th:object="${latestOrder}">
+
+    <input  th:value="${user.getName()}" name="name" type="text" placeholder="name" th:readonly=true>
+
+    <select name="beverage">
+      <option th:each="beverage : ${beverages}" th:text="${beverage.description}" th:value="${beverage.getId()}" th:selected="${beverage.getId()==latestOrder.getBeverage()}"/>
+    </select>
+    <select name="mainCourse">
+      <option th:each="mainCourse : ${mainCourses}"  th:text="${mainCourse.description}" th:value="${mainCourse.getId()}" th:selected="${mainCourse.getId()==latestOrder.getMainCourse()}"/>
+    </select>
+    <input  th:value="${latestOrder.getCalories()}" name="calories" type="text" placeholder="calories" th:readonly=true>
+    <input type="submit" value="Edit order">
+  </form>
+</div>
+
+<a href="/">Logout (Not Implemented)</a>
 </body>
 </html>

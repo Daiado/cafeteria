@@ -31,6 +31,9 @@ create table user_order
         constraint fk_main_course_product references product,
     beverage_id        uuid
         constraint fk_beverage_product references product,
+    user_id            uuid
+        constraint fk_account_order references account,
+    total_calories     numeric      not null,
     created_date       timestamp    not null,
     created_by         uuid         not null,
     last_modified_date timestamp    not null,

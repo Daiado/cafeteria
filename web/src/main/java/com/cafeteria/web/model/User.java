@@ -1,7 +1,6 @@
 package com.cafeteria.web.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+import com.cafeteria.web.enumerator.RoleEnum;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import org.springframework.security.core.GrantedAuthority;

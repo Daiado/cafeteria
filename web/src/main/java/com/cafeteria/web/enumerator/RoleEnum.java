@@ -1,4 +1,4 @@
-package com.cafeteria.web.model;
+package com.cafeteria.web.enumerator;
 
 public enum RoleEnum {
 

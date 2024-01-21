@@ -27,5 +27,7 @@ spring:
     show-sql: false
 
 
+services:
+  product-api: ${CAFETERIA_PRODUCT_URL:http://localhost:8082/product}
 
 

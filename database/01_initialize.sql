@@ -5,8 +5,8 @@ DECLARE
 
 Begin
 
-INSERT INTO ACCOUNT((id,created_date,created_by,last_modified_date,last_modified_by,name,email,password,role)
-    VALUES (systemUser,systemUser,startTime,systemUser,'Admin',admin@notafakeemail.com,
+INSERT INTO ACCOUNT(id,created_date,created_by,last_modified_date,last_modified_by,name,email,password,role)
+    VALUES (systemUser,startTime,systemUser,startTime,systemUser,'Admin','admin@notafakeemail.com',
             '$2a$10$tOU3k/PeeTYxkOV9gWmFke/7rI3LMB5FWa2solt.rEem98hLzQdkq','ADMIN');
 
 INSERT INTO PRODUCT(id,created_date,created_by,last_modified_date,last_modified_by,product_type,description,calories)
