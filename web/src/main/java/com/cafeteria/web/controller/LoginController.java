@@ -6,10 +6,12 @@ import com.cafeteria.web.model.dto.UserRegistrationDto;
 import com.cafeteria.web.service.LoginService;
 import com.cafeteria.web.utils.TokenService;
 import com.cafeteria.web.utils.UserClient;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,8 +39,8 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String loginUser(@ModelAttribute AuthenticationDto login) {
-        return loginService.loginUser(login);
+    public String loginUser(@ModelAttribute AuthenticationDto login, HttpServletResponse response) {
+        return loginService.loginUser(login,response);
     }
 
     @GetMapping("/registration")

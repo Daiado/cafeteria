@@ -1,6 +1,5 @@
 package com.cafeteria.web.configuration;
 
-
 import com.cafeteria.web.utils.TokenService;
 import com.cafeteria.web.utils.UserClient;
 import jakarta.servlet.FilterChain;
@@ -15,6 +14,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 
 import java.io.IOException;
+import java.util.Arrays;
 
 @Component
 public class SecurityFilter extends OncePerRequestFilter {
@@ -29,7 +29,12 @@ public class SecurityFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        var token = this.recoverToken(request);
+        String token = null;
+        if(request.getCookies()!=null)
+        {
+            token = Arrays.stream(request.getCookies()).filter(cookie ->
+                    cookie.getName().equals("token")).findFirst().get().getValue().toString();
+        }
         if(token != null){
             var email = tokenService.validateToken(token);
             UserDetails user = userClient.getUserByEmail(email);
@@ -38,11 +43,5 @@ public class SecurityFilter extends OncePerRequestFilter {
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
         filterChain.doFilter(request, response);
-    }
-
-    private String recoverToken(HttpServletRequest request){
-        var authHeader = request.getHeader("Authorization");
-        if(authHeader == null) return null;
-        return authHeader.replace("Bearer ", "");
     }
 }
