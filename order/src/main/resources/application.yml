@@ -16,7 +16,7 @@ spring:
   datasource:
     username: postgres
     password: postgres
-    url: jdbc:postgresql://localhost:5432/cafeteria
+    url: ${CAFETERIA_POSTGRES_URL:jdbc:postgresql://localhost:5432/cafeteria}
     hikari:
       pool-name: postgresql-pool
       connection-timeout: 60000

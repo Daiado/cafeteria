@@ -42,6 +42,7 @@ public class LoginServiceImpl implements LoginService {
             Authentication auth = this.authenticationManager.authenticate(credentials);
             response.addCookie(tokenService.generateCookie(auth));
         }catch (Exception e){
+            System.out.println(e);
            return "redirect:/login?error";
         }
 
@@ -67,6 +68,7 @@ public class LoginServiceImpl implements LoginService {
         try{
         userClient.createUser(user);
         }catch (FeignException e ){
+            System.out.println(e);
             return "redirect:/registration?error";
         }
         return "redirect:/login?success";

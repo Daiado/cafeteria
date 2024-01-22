@@ -3,6 +3,7 @@ version: "3.9"
 services:
   user:
     image: user
+    container_name: user-1
     build:
       context: ../user
       dockerfile: ../user/Dockerfile
@@ -11,6 +12,7 @@ services:
       - '8083:8083'
   order:
     image: order
+    container_name: order-1
     build:
       context: ../order
       dockerfile: ../order/Dockerfile
@@ -19,6 +21,7 @@ services:
       - '8081:8081'
   product:
     image: product
+    container_name: product-1
     build:
       context: ../product
       dockerfile: ../product/Dockerfile
@@ -27,6 +30,7 @@ services:
       - '8082:8082'
   web:
     image: web
+    container_name: web-1
     build:
       context: ../web
       dockerfile: ../web/Dockerfile
@@ -35,6 +39,7 @@ services:
       - '8080:8080'
   postgres:
     image: postgres:15
+    container_name: postgres-1
     restart: always
     environment:
       - POSTGRES_DB=cafeteria

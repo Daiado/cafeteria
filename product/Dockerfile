@@ -17,4 +17,5 @@ ENV APP_HOME=$BUILD_HOME
 COPY --from=build-image $APP_HOME/build/libs/product.jar app.jar
 
 ENV JAVA_OPTS=""
+ENV CAFETERIA_POSTGRES_URL="jdbc:postgresql://postgres:5432/postgres"
 ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /app.jar --server.port=8082" ]
