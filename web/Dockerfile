@@ -17,7 +17,7 @@ ENV APP_HOME=$BUILD_HOME
 COPY --from=build-image $APP_HOME/build/libs/web.jar app.jar
 
 ENV JAVA_OPTS=""
-ENV CAFETERIA_POSTGRES_URL="jdbc:postgresql://postgres:5432/postgres"
+ENV CAFETERIA_POSTGRES_URL="jdbc:postgresql://postgres:5432/cafeteria"
 ENV CAFETERIA_USER_URL='http://user-1:8083/user'
 ENV CAFETERIA_ORDER_URL='http://order-1:8083/order'
 ENV CAFETERIA_PRODUCT_URL='http://product-1:8083/product'

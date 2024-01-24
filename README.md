@@ -7,12 +7,14 @@ This API is consisted of 4 microservices
 
 # Build Application
 
-If you are not using mac go to docker folder and run: 
+If you are not using mac go to /docker folder and run: 
 - `docker-compose up` in your terminal, it requires docker on you machine.
 
 If you are using a mac contact me so i can provide a jdk image (mac does not support alpine images)
 
-`Currently docker-compose up us not working because of feign as soon as i have it fix i wll remove this line so for now to run the application run all 4 microservices on you ide of your choise run gradle build and run the apps. to have a database go to docker folder and run docker-compose up. this is temporary and it will be fixed.`
+App will run on http://localhost:8080/
+
+recomennd running it on private browser since the cookie will not refresh and it will stuck the app(or remove the cookie token then your done on a normal browser)
 
 # Specs
 
